@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export interface Props {
     name: string;
     quantity: number;
@@ -6,19 +8,29 @@ export interface Props {
 
 
 export function ItemCounter({ name, quantity }: Props) {
+
+    const [count, setCount] = useState(quantity)
+    const handleAdd = () => { setCount(count + 1) }
+    const handleSubastract = () => {
+        if (count === 0) return;  /* si el valor es 0 no hace nada */
+        setCount(count - 1)
+    }
+
+
     return (
         <section style={{
             display: 'flex',
             alignItems: 'center',
             gap: 10,
             marginTop: 10,
-        }}>
+        }}
+        >
             <span style={{
                 width: 150,
             }}>{name}</span>
-            <button>+1</button>
-            <span>{quantity}</span>
-            <button>-1</button>
+            <button onClick={handleAdd}>+1</button>
+            <span>{count}</span>
+            <button onClick={handleSubastract}>-1</button>
 
         </section>
     )
