@@ -1,4 +1,6 @@
 import { useState } from "react";
+import './itemCounter.css'
+
 
 export interface Props {
     name: string;
@@ -18,16 +20,18 @@ export function ItemCounter({ name, quantity }: Props) {
 
 
     return (
-        <section style={{
+        <section
+            className="item-row"
+        /* style={{
             display: 'flex',
             alignItems: 'center',
             gap: 10,
             marginTop: 10,
-        }}
+        }} */
         >
-            <span style={{
-                width: 150,
-            }}>{name}</span>
+            <span className="item-text">
+                {name}
+            </span>
             <button onClick={handleAdd}>+1</button>
             <span>{count}</span>
             <button onClick={handleSubastract}>-1</button>
